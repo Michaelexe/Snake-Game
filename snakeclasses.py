@@ -1,4 +1,5 @@
 import pygame as pg
+from time import sleep
 from random import randrange
 
 run = True
@@ -11,6 +12,7 @@ run = True
 class snake():
 	def __init__(self):
 		self.position = [[60,0,2],[30,0,2],[0,0,2]]
+		self.score_value = len(self.position) - 2
 		
 		self.turnleft = []
 		self.turnright = []
@@ -85,13 +87,20 @@ class snake():
 		for block in self.position:
 			pg.draw.rect(window, (255,0,0), (block[0], block[1], 30, 30))
 
+	def draw_score(self, window):
+		font = pg.font.SysFont('comicsans', 30, True)
+		score = font.render("score : " + str(self.score_value), True, (255,255,255))
+		window.blit(score, (570, 10))
+
 	def death_check(self):
 		if self.position[0][0] == 690 or self.position[0][0] < 0 or self.position[0][1] < 0 or self.position[0][1] == 510:
 			run = False
+			
 
 		for blocks in self.position:
 			if [self.position[0][0], self.position[0][1]] == [blocks[0], blocks[1]]:
 				run = False
+				
 
 
 
@@ -105,6 +114,7 @@ class apple():
 	def eat(self):
 		if [snake.position[0][0], snake.position[0][1]] == self.position:
 			self.position = [randrange(0,690,30), randrange(0,510,30)]
+			snake.score_value += 1
 
 			if snake.position[-1][2] == 1:
 				snake.position.append([snake.position[-1][0] + 30, snake.position[-1][1], 1])

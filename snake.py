@@ -36,6 +36,7 @@ while run:
 	apple.eat()
 	snake.draw(window)
 	apple.draw(window)
+	snake.draw_score(window)
 	death_check()
 	pg.display.update()
 
