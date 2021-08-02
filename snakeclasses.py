@@ -1,6 +1,8 @@
 import pygame as pg
-from time import sleep
 from random import randrange
+
+
+
 
 #1 = left
 #2 = right
@@ -10,7 +12,7 @@ from random import randrange
 class snake():
 	def __init__(self):
 		self.position = [[60,0,2],[30,0,2],[0,0,2]]
-		self.score_value = len(self.position) - 2
+		self.score_value = 0
 		
 		self.turnleft = []
 		self.turnright = []
@@ -90,6 +92,7 @@ class snake():
 		score = font.render("score : " + str(self.score_value), True, (255,255,255))
 		window.blit(score, (570, 10))
 
+		
 				
 
 
@@ -120,3 +123,11 @@ class apple():
 
 	def draw(self, window):
 		pg.draw.rect(window, (0,255,0), (self.position[0], self.position[1], 30, 30))
+
+
+
+
+
+
+
+
