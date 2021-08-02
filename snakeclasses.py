@@ -2,8 +2,6 @@ import pygame as pg
 from time import sleep
 from random import randrange
 
-run = True
-
 #1 = left
 #2 = right
 #3 = up
@@ -92,14 +90,6 @@ class snake():
 		score = font.render("score : " + str(self.score_value), True, (255,255,255))
 		window.blit(score, (570, 10))
 
-	def death_check(self):
-		if self.position[0][0] == 690 or self.position[0][0] < 0 or self.position[0][1] < 0 or self.position[0][1] == 510:
-			run = False
-			
-
-		for blocks in self.position:
-			if [self.position[0][0], self.position[0][1]] == [blocks[0], blocks[1]]:
-				run = False
 				
 
 
